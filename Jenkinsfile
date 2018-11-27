@@ -30,7 +30,7 @@ pipeline {
                                         sourceFiles: 'dist/trainSchedule.zip',
                                         removePrefix: 'dist/',
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'sudo /bin/touch /tmp/here.txt',
+                                        execCommand: 'sudo ls / >> /tmp/here.txt',
                                     )
                                 ]
                             )
