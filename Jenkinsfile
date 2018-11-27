@@ -15,8 +15,8 @@
             steps {
               withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                 sshPublisher(
-                  failOnError: false,
-                  continueOnError: true,
+                  failOnError: true,
+                  continueOnError: false,
                   publishers: [
                       sshPublisherDesc(
                           configName: 'staging',
@@ -49,8 +49,8 @@
               milestone(1)
               withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                   sshPublisher(
-                      failOnError: false,
-                      continueOnError: true,
+                      failOnError: true,
+                      continueOnError: false,
                       publishers: [
                           sshPublisherDesc(
                               configName: 'production',
