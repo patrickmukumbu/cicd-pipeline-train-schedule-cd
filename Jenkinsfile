@@ -30,7 +30,7 @@ pipeline {
                                         sourceFiles: 'dist/trainSchedule.zip',
                                         removePrefix: 'dist/',
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'sudo /bin/yum install httpd -y',
+                                        execCommand: 'sudo /bin/touch /tmp/here.txt',
                                     )
                                 ]
                             )
