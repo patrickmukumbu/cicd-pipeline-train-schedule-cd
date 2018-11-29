@@ -15,27 +15,10 @@ pipeline {
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
-                    sshPublisher(
-                        failOnError: true,
-                        continueOnError: false,
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: 'staging',
-                                sshCredentials: [
-                                    username: "$USERNAME",
-                                    encryptedPassphrase: "$USERPASS"
-                                ],
-                                transfers: [
-                                    sshTransfer(
-                                        execCommands: [
-                                            'yum update -y'
-                                            ]
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                  
+                        failOnError: true
+                        continueOnError: false
+                        configName: 'staging'
+                        sh 'yum update -y'
                 }
             }
         
