@@ -17,7 +17,6 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                         failOnError: true
                         continueOnError: false
-                        configName: 'staging'
                         sh 'yum update -y'
                 }
             }
