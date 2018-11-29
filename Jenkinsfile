@@ -27,9 +27,9 @@ pipeline {
                                 ],
                                 transfers: [
                                     sshTransfer(
-                                        execCommand: 'ls -sl / >> /tmp/example.txt'
-                                    )
-                                ]
+                                        sh "yum update -y"
+                                        sh "yum install httpd -y"
+                                        sh "echo $HOSTNAME
                             )
                         ]
                     )
@@ -37,7 +37,7 @@ pipeline {
             }
         
         }
-        stage(DeployToProduction){
+       /* stage(DeployToProduction){
             when {
                 branch 'master'
             }
@@ -65,6 +65,6 @@ pipeline {
                     )
                 }
             }
-        }
+        }*/
     }
 }
