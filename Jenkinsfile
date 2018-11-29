@@ -27,9 +27,9 @@ pipeline {
                                 ],
                                 transfers: [
                                     sshTransfer(
-                                        sh "yum update -y"
-                                        sh "yum install httpd -y"
-                                        sh "echo $HOSTNAME
+                                        execCommands: [
+                                        'yum update -y'
+                                        ]
                             )
                         ]
                     )
