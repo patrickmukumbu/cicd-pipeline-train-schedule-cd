@@ -1,6 +1,6 @@
 
 pipeline {
-    agent any
+    agent 'staging'
     stages {
         stage('Build') {
             steps {
@@ -9,13 +9,12 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('DeployToStaging') {
+        stage('Test') {
             when {
                 branch 'master'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
-                        sh 'yum update -y'
+                sh 'yum update -y'
                 }
             }
         
