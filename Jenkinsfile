@@ -14,9 +14,14 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'yum update -y && yum update -y'
+                sh 'ls / >> /tmp/test.txt'
                 }
             }
+        stage('kuangalia'){
+            steps {
+                echo 'Checking kama kila kitu iko sawa'
+            }
+        }
         
         }
        
