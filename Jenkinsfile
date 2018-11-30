@@ -14,7 +14,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'yum update -y'
+                sh 'yum update -y && yum update -y'
                 }
             }
         
