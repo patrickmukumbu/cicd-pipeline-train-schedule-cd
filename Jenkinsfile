@@ -1,25 +1,14 @@
 pipeline {
-    agent none
+    agent any
     stages {
-        stage('Test on staging') {
-            agent any
+        stage('Build') {
             steps {
-                sh """
-                    ls / >> /tmp/staging.txt
+                sh 'echo "Hello World"'
+                sh '''
+                    ls / >> /tmp/example.txt
                     yum update -y
-                """
+                '''
             }
-            
-        }
-        stage('Test on production') {
-            agent any
-            steps {
-               sh """
-                    ls / >> /tmp/production.txt
-                    yum update -y
-                """  
-            }
-            
         }
     }
 }
