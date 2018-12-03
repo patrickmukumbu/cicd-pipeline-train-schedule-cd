@@ -2,9 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Test on staging') {
-            agent { 
-                label 'staging'
-            }
+            agent any
             steps {
                 sh """
                     ls / >> /tmp/staging.txt
@@ -14,9 +12,7 @@ pipeline {
             
         }
         stage('Test on production') {
-            agent {
-                label 'production'
-            }
+            agent any
             steps {
                sh """
                     ls / >> /tmp/production.txt
