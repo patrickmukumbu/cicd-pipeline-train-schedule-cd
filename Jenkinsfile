@@ -1,13 +1,29 @@
 pipeline {
-    agent any
-    parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
-    }
+    agent none
     stages {
-        stage('Example') {
-            steps {
-                echo "${params.Greeting} World!"
+        stage('Test on staging') {
+            agent { 
+                label 'staging'
             }
+            steps {
+                sh """
+                    ls / >> /tmp/staging.txt
+                    yum update -y
+                """
+            }
+            
+        }
+        stage('Test on production') {
+            agent {
+                label 'production'
+            }
+            steps {
+               sh """
+                    ls / >> /tmp/production.txt
+                    yum update -y
+                """  
+            }
+            
         }
     }
 }
