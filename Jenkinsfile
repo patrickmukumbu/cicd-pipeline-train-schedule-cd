@@ -1,29 +1,13 @@
-
 pipeline {
     agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                echo 'Running build automation'
-                sh './gradlew build --no-daemon'
-                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+                echo "${params.Greeting} World!"
             }
         }
-        stage('Test') {
-            when {
-                branch 'master'
-            }
-            steps {
-                sh 'ls / >> /tmp/test.txt'
-                }
-            }
-        stage('kuangalia'){
-            steps {
-                echo 'Checking kama kila kitu iko sawa'
-            }
-        }
-        
-        }
-       
-    
+    }
 }
